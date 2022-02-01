@@ -1,8 +1,20 @@
+import 'dart:ffi';
+
 class CatalogModel {
   static List<Item> items = [];
+  late final num max;
 
   //get Item
-  Item getByPosition(int pos) => items[pos];
+  static Item getByPosition(int pos) => items[pos];
+
+  //set max
+  set maxValue(num value) {
+    assert(value >= 0);
+    max = value;
+  }
+
+  //get max
+  num get maxValue => max;
 }
 
 class Item {
@@ -11,6 +23,8 @@ class Item {
   final String auth;
   final String rating;
   final String bookId;
+  final num progress;
 
-  Item(this.image, this.title, this.auth, this.rating, this.bookId);
+  Item(this.image, this.title, this.auth, this.rating, this.bookId,
+      this.progress);
 }

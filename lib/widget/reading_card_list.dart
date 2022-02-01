@@ -82,8 +82,12 @@ class ReadingListCard extends StatelessWidget {
                         style: TextStyle(color: kBlackColor),
                         children: [
                           TextSpan(
-                            text: catalog.title + "\n",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            text: catalog.title.length > 23
+                                ? catalog.title.substring(0, 23) + "..." + "\n"
+                                : catalog.title + "\n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           TextSpan(
                             text: catalog.auth,
