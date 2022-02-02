@@ -24,7 +24,8 @@ class Item {
   final String rating;
   final String bookId;
   final num progress;
+  final String desc;
 
   Item(this.image, this.title, this.auth, this.rating, this.bookId,
-      this.progress);
+      this.progress, this.desc);
 }

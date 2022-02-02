@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:ebook_app/consttant.dart';
 import 'package:ebook_app/model/catalog.dart';
+import 'package:ebook_app/screen/detail_screen.dart';
 import 'package:ebook_app/widget/book_rating.dart';
 import 'package:ebook_app/widget/reading_card_list.dart';
 import 'package:ebook_app/widget/two_sided_round_button.dart';
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
       CatalogModel.items.clear();
       for (var doc in querySnapshot.docs) {
         Item item = Item(doc["image"], doc["title"], doc["auth"], doc["rating"],
-            doc["bookId"], doc["progress"]);
+            doc["bookId"], doc["progress"], doc["desc"]);
         CatalogModel.items.add(item);
       }
     });
@@ -120,8 +121,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             ReadingListCard(
                                 catalog: catalog,
-                                pressDetails: () {},
-                                pressRead: () {}),
+                                pressDetails: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailScreen(
+                                            bookId: catalog.bookId),
+                                      ));
+                                },
+                                pressRead: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailScreen(
+                                            bookId: catalog.bookId),
+                                      ));
+                                }),
                           ],
                         );
                       },
@@ -312,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Expanded(
                           child: Text(
-                            "When the earth was flat and everyone wanted to win the game of the best and people….",
+                            "keep using your brain, work for free, soon your mind will show you ways of making money far beyond what I could ever pay you.....",
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
